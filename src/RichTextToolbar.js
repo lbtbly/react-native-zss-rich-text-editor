@@ -102,7 +102,7 @@ export default class RichTextToolbar extends Component {
           ]}
           onPress={() => this._onPress(action)}
       >
-        {icon ? <Image source={icon} style={{tintColor: selected ? this.props.selectedIconTint : this.props.iconTint}}/> : null}
+        {icon ? <Image source={icon} style={{ width: '50%', height: '50%', alignSelf: 'center', resizeMode: 'contain', tintColor: selected ? this.props.selectedIconTint : this.props.iconTint}}/> : null}
       </TouchableOpacity>
     );
   }
@@ -115,10 +115,11 @@ export default class RichTextToolbar extends Component {
 
   render() {
     return (
-      <View
-          style={[{height: 50, backgroundColor: '#D3D3D3', alignItems: 'center'}, this.props.style]}
-      >
+      <View style={[{ height: 50, backgroundColor: '#D3D3D3', alignItems: 'center' }, this.props.style]}>
        <FlatList
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          alwaysBounceVertical={false}
           data={this.state.dataSet}
           numColumns={this.state.actions.length}
           renderItem={(item) => this._renderAction(item.item.action, item.item.selected)}
